@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+import GithubActivity from './GithubActivity.astro';
+import { site } from '../config';
+import { profile } from '../data/profile';
+import { t, withBase, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+const facts = [
+  { icon: 'lucide:map-pin', html: `<span class="font-semibold text-ink">${t(profile.location, lang)}</span> <span class="text-faint">· ${t(profile.mode, lang)}</span>` },
+  { hideMobile: true, icon: 'lucide:graduation-cap', html: t(profile.education, lang) },
+  { icon: 'lucide:briefcase-business', html: t(profile.experience, lang) },
+  { hideMobile: true, icon: 'lucide:mail', html: `<a class="break-all font-medium text-ink underline-offset-4 hover:underline" href="mailto:${site.email}">${site.email}</a>` },
+];
+const wa = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t(ui.waMessage, lang))}`;
+const btn = 'flex w-full items-center justify-center gap-2.5 rounded-xl px-4 py-3 text-sm font-semibold transition';
+const link = 'flex flex-1 items-center justify-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-muted transition hover:bg-stone-100 hover:text-ink';
+---
+<aside class="w-full shrink-0 self-start rounded-3xl border border-line bg-white p-5 shadow-sm sm:p-6 lg:sticky lg:top-6 lg:w-[350px]">
+  <div class="flex items-center gap-4">
+    {site.avatar
+      ? <img src={withBase(site.avatar)} alt={site.name} width="64" height="64" class="size-16 rounded-2xl object-cover" />
+      : <div class="grid size-16 shrink-0 place-items-center rounded-2xl bg-ink text-xl font-bold tracking-tight text-white dark:text-canvas" aria-hidden="true">{profile.initials}</div>}
+    <div class="min-w-0">
+      <h1 class="text-2xl font-bold leading-tight tracking-tight">{site.name}</h1>
+      <p class="mt-1 text-sm leading-snug text-muted">{t(profile.role, lang)}</p>
+    </div>
+  </div>
+
+
+  <ul class="my-5 space-y-3 lg:my-6 lg:space-y-3.5 text-sm leading-snug text-muted">
+    {facts.map((f) => (
+      <li class:list={['flex items-start gap-3', f.hideMobile && 'max-lg:hidden']}>
+        <span class="grid size-8 shrink-0 place-items-center rounded-lg bg-stone-100 text-ink" aria-hidden="true"><Icon name={f.icon} class="size-4" /></span>
+        <span class="min-w-0 self-center" set:html={f.html} />
+      </li>
+    ))}
+  </ul>
+
+  <div class="grid grid-cols-2 gap-2.5 lg:block lg:space-y-2.5">
+    <a href={wa} target="_blank" rel="noopener noreferrer" class:list={[btn, 'bg-accent-strong text-white hover:opacity-90 dark:text-canvas']}>
+      <Icon name="simple-icons:whatsapp" class="size-4" /> {t(ui.whatsapp, lang)}
+    </a>
+    <a href={withBase(site.cv[lang])} download class:list={[btn, 'border border-line text-ink hover:bg-stone-100']}>
+      <Icon name="lucide:download" class="size-4" /> {t(ui.downloadCv, lang)}
+    </a>
+  </div>
+
+  <div class="mt-4 flex gap-1 border-t border-line pt-4" aria-label={t(ui.channels, lang)}>
+    <a href={site.linkedin} target="_blank" rel="noopener noreferrer" class={link}><Icon name="simple-icons:linkedin" class="size-4" /> LinkedIn</a>
+    <a href={`https://github.com/${site.github}`} target="_blank" rel="noopener noreferrer" class={link}><Icon name="simple-icons:github" class="size-4" /> GitHub</a>
+  </div>
+
+  <GithubActivity lang={lang} />
+</aside>

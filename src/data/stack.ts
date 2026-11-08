@@ -1,0 +1,44 @@
+import type { L } from '../i18n/utils';
+
+/**
+ * ✏️ STACK. `icon` = "simple-icons:nombre" (logos de marcas, ver https://icones.js.org/collection/simple-icons)
+ * o "lucide:nombre" para íconos genéricos. Solo tecnologías que ya has usado.
+ */
+export const stack: { title: L; items: { name: string; icon: string }[] }[] = [
+  {
+    title: { es: 'Desarrollo web', en: 'Web development' },
+    items: [
+      { name: 'PHP', icon: 'simple-icons:php' },
+      { name: 'JavaScript', icon: 'simple-icons:javascript' },
+      { name: 'Node.js', icon: 'simple-icons:nodedotjs' },
+      { name: 'Astro', icon: 'simple-icons:astro' },
+      { name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
+    ],
+  },
+  {
+    title: { es: 'Datos y visualización', en: 'Data and visualization' },
+    items: [
+      { name: 'MySQL', icon: 'simple-icons:mysql' },
+      { name: 'SQL', icon: 'lucide:database' },
+      { name: 'Power BI', icon: 'simple-icons:powerbi' },
+      { name: 'Python', icon: 'simple-icons:python' },
+      { name: 'R', icon: 'simple-icons:r' },
+      { name: 'SPSS', icon: 'lucide:sigma' },
+      { name: 'Chart.js', icon: 'simple-icons:chartdotjs' },
+    ],
+  },
+  {
+    title: { es: 'Automatización', en: 'Automation' },
+    items: [
+      { name: 'n8n', icon: 'simple-icons:n8n' },
+      { name: 'APIs', icon: 'lucide:plug' },
+    ],
+  },
+  {
+    title: { es: 'Ofimática', en: 'Office' },
+    items: [
+      { name: 'Excel', icon: 'lucide:table' },
+      { name: 'Word', icon: 'lucide:file-text' },
+    ],
+  },
+];

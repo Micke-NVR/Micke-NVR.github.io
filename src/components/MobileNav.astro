@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const items = [
+  { id: 'top', icon: 'lucide:house', label: ui.navHome },
+  { id: 'projects', icon: 'lucide:folder-kanban', label: ui.navProjects },
+  { id: 'stack', icon: 'lucide:layers', label: ui.navStack },
+  { id: 'contact', icon: 'lucide:mail', label: ui.navContact },
+];
+---
+<nav id="mobile-nav" aria-label="Menu" class="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/90 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
+  <ul class="mx-auto grid max-w-md grid-cols-4">
+    {items.map((i, n) => (
+      <li>
+        <a href={`#${i.id}`} data-target={i.id} aria-current={n === 0 ? 'true' : undefined} class="group flex flex-col items-center gap-0.5 py-2 text-[11px] font-semibold text-faint transition aria-[current=true]:text-accent-strong">
+          <span class="grid h-7 w-12 place-items-center rounded-full transition group-aria-[current=true]:bg-accent-soft"><Icon name={i.icon} class="size-[18px]" /></span>
+          {t(i.label, lang)}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('#mobile-nav a')];
+  const set = (id: string) => links.forEach((a) => a.toggleAttribute('aria-current', false) || (a.dataset.target === id && a.setAttribute('aria-current', 'true')));
+  const io = new IntersectionObserver((es) => es.forEach((e) => e.isIntersecting && set(e.target.id)), { rootMargin: '-45% 0px -50% 0px' });
+  ['top', 'projects', 'stack', 'contact'].forEach((id) => { const el = document.getElementById(id); el && io.observe(el); });
+</script>

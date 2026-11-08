@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+import Card from './Card.astro';
+import { stack } from '../data/stack';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<Card id="stack" title={t(ui.stack, lang)} note={t(ui.stackNote, lang)}>
+  <div class="space-y-6">
+    {stack.map((group) => (
+      <div>
+        <h3 class="mb-2.5 text-[11px] font-bold uppercase tracking-wider text-faint">{t(group.title, lang)}</h3>
+        <ul class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 xl:grid-cols-5">
+          {group.items.map((item) => (
+            <li class="flex items-center gap-2.5 rounded-xl border border-line bg-stone-50/80 px-3 py-2.5 text-sm font-medium transition hover:border-stone-300 hover:bg-white">
+              <Icon name={item.icon} class="size-[18px] shrink-0 text-ink" /> <span class="truncate">{item.name}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Card>

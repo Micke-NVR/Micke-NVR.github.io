@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/geist';
+import '../styles/global.css';
+import { site } from '../config';
+import { profile } from '../data/profile';
+import { t, homePath, withBase, type Lang } from '../i18n/utils';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+const title = t(profile.seo.title, lang);
+const description = t(profile.seo.description, lang);
+const canonical = new URL(homePath(lang), Astro.site);
+const ogImage = new URL(withBase('/og.png'), Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: t(profile.role, lang),
+  email: `mailto:${site.email}`,
+  url: canonical.href,
+  address: { '@type': 'PostalAddress', addressLocality: 'Lima', addressCountry: 'PE' },
+  sameAs: [`https://github.com/${site.github}`, site.linkedin],
+};
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <meta name="theme-color" content="#fafaf9" />
+    <meta name="color-scheme" content="light" />
+    <!-- Tema claro por defecto. Solo aplica el oscuro si se eligió con el botón, antes de pintar -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_PE" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="min-h-screen font-sans">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,13 @@
+---
+interface Props { title?: string; note?: string; id?: string; class?: string; label?: string }
+const { title, note, id, class: cls, label } = Astro.props;
+---
+<section id={id} aria-label={!title ? label : undefined} class:list={['rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-7', cls]}>
+  {(title || note) && (
+    <header class="mb-5 flex items-center justify-between gap-3 border-b border-stone-100 pb-3">
+      <h2 class="text-sm font-bold text-ink">{title}</h2>
+      {note && <span class="text-right text-xs text-faint">{note}</span>}
+    </header>
+  )}
+  <slot />
+</section>

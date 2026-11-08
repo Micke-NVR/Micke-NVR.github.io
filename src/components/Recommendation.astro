@@ -1,0 +1,90 @@
+---
+import { Icon } from 'astro-icon/components';
+import Card from './Card.astro';
+import { recommendation as r } from '../data/recommendation';
+import { t, withBase, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const thumb = withBase(r.thumb);
+const full = withBase(r.full);
+const initials = 'LH';
+---
+<Card title={t(ui.recommendation, lang)} note={t(ui.recommendationNote, lang)} class="flex flex-col">
+  <div class="grid flex-1 grid-cols-[104px_1fr] content-center items-start gap-4 sm:grid-cols-[168px_1fr] sm:gap-5">
+    <a
+      href={full}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-carta-open
+      aria-label={t(ui.recommendationOpen, lang)}
+      class="group relative block aspect-[3/4] overflow-hidden rounded-xl border border-line bg-stone-100 shadow-sm transition hover:border-stone-300 hover:shadow-md"
+    >
+      <img
+        src={thumb}
+        alt={t(ui.recommendationAlt, lang)}
+        width="435"
+        height="640"
+        loading="lazy"
+        class="size-full object-cover object-top"
+      />
+      <span class="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1 bg-ink/70 px-2 py-1.5 text-[10px] font-semibold text-white opacity-0 transition group-hover:opacity-100 max-sm:opacity-100">
+        <Icon name="lucide:maximize-2" class="size-3" />{t(ui.recommendationZoom, lang)}
+      </span>
+    </a>
+
+    <div class="flex min-w-0 flex-col">
+      <Icon name="lucide:quote" class="mb-2 size-5 text-accent" />
+      <blockquote class="text-[13px] leading-relaxed sm:text-[15px]">{t(r.quote, lang)}</blockquote>
+      <div class="mt-auto flex items-center gap-2.5 pt-4">
+        <span class="grid size-9 shrink-0 place-items-center rounded-full border border-line bg-stone-100 text-[11px] font-bold" aria-hidden="true">{initials}</span>
+        <p class="min-w-0 text-xs leading-snug">
+          <span class="block font-bold">{r.author}</span>
+          <span class="block text-muted">{t(r.role, lang)}</span>
+          <span class="block text-faint">{t(r.entity, lang)} · {t(r.date, lang)}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</Card>
+
+<dialog
+  id="carta-dialog"
+  aria-labelledby="carta-dialog-title"
+  class="w-[min(94vw,760px)] max-w-none rounded-2xl border border-line bg-white p-2 text-ink shadow-2xl backdrop:bg-ink/70 sm:p-3"
+>
+  <div class="flex items-center justify-between gap-3 px-1.5 pb-2 pt-1">
+    <h2 id="carta-dialog-title" class="text-sm font-bold">{t(ui.recommendation, lang)}</h2>
+    <button type="button" data-carta-close aria-label={t(ui.close, lang)} class="grid size-8 place-items-center rounded-full border border-line text-muted transition hover:text-ink">
+      <Icon name="lucide:x" class="size-4" />
+    </button>
+  </div>
+  <img
+    src={full}
+    alt={t(ui.recommendationAlt, lang)}
+    width="1060"
+    height="1560"
+    class="mx-auto max-h-[76vh] w-auto max-w-full rounded-lg border border-line"
+  />
+  <p class="px-2 pt-2 text-center text-xs text-muted">
+    <a href={full} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 transition hover:text-ink">{t(ui.recommendationNewTab, lang)}</a>
+  </p>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('carta-dialog') as HTMLDialogElement | null;
+  const triggers = document.querySelectorAll<HTMLAnchorElement>('[data-carta-open]');
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (event) => {
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      event.preventDefault();
+      dialog.showModal();
+    });
+  });
+
+  dialog?.querySelector('[data-carta-close]')?.addEventListener('click', () => dialog.close());
+  dialog?.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+</script>

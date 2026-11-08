@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon/components';
+import Chip from './Chip.astro';
+import { services } from '../data/services';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<section aria-labelledby="services-title">
+  <div class="mb-3 flex items-baseline justify-between px-1">
+    <h2 id="services-title" class="text-sm font-bold">{t(ui.services, lang)}</h2>
+    <span class="text-xs text-faint">{t(ui.servicesNote, lang)}</span>
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    {services.map((s) => (
+      <article class="flex flex-col rounded-2xl border border-line bg-white p-5 shadow-sm transition hover:border-stone-300">
+        <div class="mb-3 grid size-9 place-items-center rounded-lg border border-line bg-stone-100 text-stone-800"><Icon name={s.icon} class="size-[18px]" /></div>
+        <h3 class="mb-1.5 text-sm font-bold">{t(s.title, lang)}</h3>
+        <p class="mb-4 text-sm leading-relaxed text-muted">{t(s.description, lang)}</p>
+        <div class="mt-auto flex flex-wrap gap-1.5 border-t border-stone-100 pt-3">
+          {s.tags.map((tag) => <Chip>{tag}</Chip>)}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

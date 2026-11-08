@@ -1,0 +1,14 @@
+---
+import Card from './Card.astro';
+import ProjectCard from './ProjectCard.astro';
+import { projects } from '../data/projects';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<Card id="projects" title={t(ui.projects, lang)} note={t(ui.projectsNote, lang)}>
+  <div class="grid gap-5 md:grid-cols-2">
+    {projects.map((p) => <ProjectCard project={p} lang={lang} />)}
+  </div>
+</Card>

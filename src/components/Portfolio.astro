@@ -1,0 +1,47 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import Sidebar from './Sidebar.astro';
+import Summary from './Summary.astro';
+import Services from './Services.astro';
+import Experience from './Experience.astro';
+import Projects from './Projects.astro';
+import Stack from './Stack.astro';
+import Credentials from './Credentials.astro';
+import Recommendation from './Recommendation.astro';
+import Contact from './Contact.astro';
+import Footer from './Footer.astro';
+import MobileNav from './MobileNav.astro';
+import { site } from '../config';
+import { profile } from '../data/profile';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<a href="#main" class="sr-only rounded-lg bg-ink px-4 py-2 text-sm text-white focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50">{t(ui.skip, lang)}</a>
+<div id="top" class="mx-auto w-full max-w-[1360px] px-4 pb-24 pt-0 md:px-8 lg:py-6">
+  <header class="sticky top-0 z-30 -mx-4 mb-4 flex items-center justify-between gap-2 border-b border-line bg-canvas/85 px-4 py-2.5 backdrop-blur md:-mx-8 md:px-8 lg:static lg:mx-0 lg:mb-5 lg:justify-end lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+    <a href="#top" class="flex min-w-0 items-center gap-2.5 lg:hidden">
+      <span class="grid size-9 shrink-0 place-items-center rounded-xl bg-ink text-sm font-bold text-white dark:text-canvas" aria-hidden="true">{profile.initials}</span>
+      <span class="min-w-0 leading-tight"><span class="block truncate text-sm font-bold">{site.name}</span><span class="block truncate text-[11px] text-faint">{t(profile.focus, lang)}</span></span>
+    </a>
+    <div class="flex items-center gap-2"><ThemeToggle lang={lang} /></div>
+  </header>
+  <div class="flex flex-col items-start gap-8 lg:flex-row">
+    <Sidebar lang={lang} />
+    <main id="main" class="flex w-full min-w-0 flex-1 flex-col gap-6">
+      <Summary lang={lang} />
+      <Services lang={lang} />
+      <Experience lang={lang} />
+      <Projects lang={lang} />
+      <Stack lang={lang} />
+      <div class="grid gap-6 lg:grid-cols-2">
+        <Credentials lang={lang} />
+        <Recommendation lang={lang} />
+      </div>
+      <Contact lang={lang} />
+    </main>
+  </div>
+  <Footer lang={lang} />
+</div>
+<MobileNav lang={lang} />

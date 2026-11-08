@@ -1,0 +1,17 @@
+---
+import { site } from '../config';
+import { profile } from '../data/profile';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const link = 'hover:text-ink hover:underline';
+---
+<footer class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-line pt-6 text-xs text-faint sm:flex-row lg:ml-[382px]">
+  <p>© {new Date().getFullYear()} {site.name} · {t(profile.role, lang)} · {t(ui.rights, lang)}</p>
+  <nav class="flex gap-4" aria-label="Social">
+    <a class={link} href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class={link} href={`https://github.com/${site.github}`} target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class={link} href={`mailto:${site.email}`}>{lang === 'es' ? 'Correo' : 'Email'}</a>
+  </nav>
+</footer>

@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon/components';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label={t(ui.theme, lang)}
+  title={t(ui.theme, lang)}
+  class="grid size-9 place-items-center rounded-full border border-line bg-white text-muted shadow-sm transition hover:text-ink"
+>
+  <Icon name="lucide:moon" class="size-4 dark:hidden" />
+  <Icon name="lucide:sun" class="hidden size-4 dark:block" />
+</button>
+
+<script>
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+  const apply = (dark: boolean) => {
+    root.classList.toggle('dark', dark);
+    meta?.setAttribute('content', dark ? '#0c0c0e' : '#fafaf9');
+  };
+  apply(root.classList.contains('dark'));
+  document.querySelector('#theme-toggle')?.addEventListener('click', () => {
+    const dark = !root.classList.contains('dark');
+    apply(dark);
+    try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
+  });
+</script>

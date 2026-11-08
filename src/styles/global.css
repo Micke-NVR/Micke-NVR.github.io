@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* ✏️ COLORES Y FUENTE: cambia aquí la identidad visual de todo el sitio. */
+@theme {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-canvas: #fafaf9;
+  --color-ink: #18181b;
+  --color-muted: #52525b;
+  --color-faint: #6b6b73;
+  --color-line: #e7e5e4;
+  /* Un solo color de acento (verde esmeralda) */
+  --color-accent: #059669;
+  --color-accent-strong: #047857;
+  --color-accent-soft: #ecfdf5;
+  --color-accent-line: #a7f3d0;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-canvas); color: var(--color-ink); -webkit-font-smoothing: antialiased; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* ───────── MODO OSCURO ─────────
+   El sitio abre en claro. El oscuro se activa con la clase "dark" en <html>
+   desde el botón sol/luna, que recuerda la elección en localStorage.
+   Truco: en vez de duplicar clases, se redefinen las variables de color; todo el sitio se adapta.
+   ✏️ Ajusta aquí los tonos oscuros. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --heat-0: #e7e5e4; --heat-1: #a7f3d0; --heat-2: #34d399; --heat-3: #059669; --heat-4: #065f46;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-canvas: #0c0c0e;
+  --color-white: #151517;        /* superficie de las tarjetas */
+  --color-ink: #fafaf9;
+  --color-muted: #a1a1aa;
+  --color-faint: #8d8d96;
+  --color-line: #2a2a2f;
+  --color-accent: #10b981;
+  --color-accent-strong: #34d399;
+  --color-accent-soft: #052e22;
+  --color-accent-line: #0f5c43;
+  /* grises que usan chips, paneles internos y bordes */
+  --color-stone-50: #1b1b1e;
+  --color-stone-100: #232327;
+  --color-stone-200: #2e2e33;
+  --color-stone-300: #45454c;
+  --color-stone-400: #a1a1aa;
+  --color-stone-700: #d4d4d8;
+  --color-stone-800: #e4e4e7;
+  --heat-0: #2a2a2f; --heat-1: #0e4429; --heat-2: #006d32; --heat-3: #26a641; --heat-4: #39d353;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+section[id], #top { scroll-margin-top: 4.5rem; }
+@media (min-width: 1024px) { section[id], #top { scroll-margin-top: 1rem; } }

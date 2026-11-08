@@ -1,0 +1,37 @@
+---
+import { Icon } from 'astro-icon/components';
+import { site } from '../config';
+import { getContributions } from '../lib/github';
+import { t, type Lang } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const data = site.showGithubActivity ? await getContributions(site.github, 20) : null;
+const level = ['bg-[var(--heat-0)]', 'bg-[var(--heat-1)]', 'bg-[var(--heat-2)]', 'bg-[var(--heat-3)]', 'bg-[var(--heat-4)]'];
+---
+{data && (
+  <div class="mt-6 border-t border-line pt-6">
+    <div class="mb-3 flex items-center justify-between gap-2">
+      <a href={`https://github.com/${site.github}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-xs font-bold hover:underline">
+        <Icon name="simple-icons:github" class="size-4" /> @{site.github}
+      </a>
+      <span class="text-[11px] font-medium text-faint">{t(ui.activity, lang)}</span>
+    </div>
+    <div class="rounded-2xl border border-line bg-stone-50 p-3">
+      <div class="grid auto-cols-fr grid-flow-col grid-rows-7 gap-[3px]" role="img" aria-label={`${data.total} ${t(ui.contributions, lang)}`}>
+        {data.cells.map((d) => (
+          <span class:list={['aspect-square rounded-[2px]', d ? level[d.level] : 'bg-transparent']} title={d ? `${d.count} · ${d.date}` : undefined} />
+        ))}
+      </div>
+    </div>
+    <div class="mt-2.5 flex items-center justify-between text-[11px] text-muted">
+      <span><strong class="text-ink">{data.total.toLocaleString(lang === 'es' ? 'es-PE' : 'en-US')}</strong> {t(ui.contributions, lang)}</span>
+      <span class="flex items-center gap-1 text-[10px] text-faint">
+        {t(ui.less, lang)}
+        {level.map((c) => <span class={`size-2 rounded-[2px] ${c}`} />)}
+        {t(ui.more, lang)}
+      </span>
+    </div>
+  </div>
+)}
