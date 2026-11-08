@@ -3,8 +3,9 @@
 Portafolio personal en **Astro 7 + Tailwind 4**, en español y sin backend. Todo el contenido
 vive en archivos de datos: no hace falta tocar los componentes para cambiar textos, proyectos o enlaces.
 
-- Sitio: https://mickenvr.freedev.app
-- Hosting: InfinityFree (FTP a `ftpupload.net`, carpeta `htdocs`)
+- Sitio: https://micke-nvr.github.io
+- Hosting del portafolio: GitHub Pages (repositorio `Micke-NVR.github.io`, despliegue automático)
+- Demos: InfinityFree (FTP a `ftpupload.net`, carpeta `htdocs`)
 
 ## 1. Arrancar en local
 
@@ -26,8 +27,8 @@ npm run dev      # http://localhost:4321
 | Experiencia laboral                                | `src/data/experience.ts`   |
 | Proyectos (textos, demo, captura)                  | `src/data/projects.ts`     |
 | Stack tecnológico                                  | `src/data/stack.ts`        |
-| Certificados                                       | `src/data/credentials.ts`  |
-| Testimonio (apagado por defecto)                   | `src/data/testimonials.ts` |
+| Certificados y enlaces a documentos               | `src/data/credentials.ts`  |
+| Carta de recomendación (cita y rutas)              | `src/data/recommendation.ts` |
 | Textos de interfaz                                 | `src/i18n/ui.ts`           |
 | Colores, tipografía y modo oscuro                  | `src/styles/global.css`    |
 
@@ -55,24 +56,29 @@ Credenciales de demostración:
 - Academia: estudiante `alumno@elolympo.demo` / `Alumno2026!`, admin `admin` / `Admin2026!`
 - Inmobiliaria: `gerencia` / `demo1234`
 
-## 4. Publicar en InfinityFree
+## 4. Publicar en GitHub Pages
 
-El hosting sirve archivos estáticos: **se sube el resultado del build, no el proyecto**.
-
-```bash
-npm run build                    # genera dist/
-```
-
-Luego sube **el contenido** de `dist/` a `htdocs` (File Manager o FTP). No subas la carpeta
-`dist` completa: entra en ella y sube sus archivos y carpetas.
-
-El dominio está fijado en `astro.config.mjs` (`SITE_URL`). Si cambia, edítalo ahí o compila con:
+El despliegue es automático: **cada push a `main`** compila y publica el sitio con
+`.github/workflows/deploy.yml` (GitHub Actions).
 
 ```bash
-SITE_URL=https://nuevo-dominio.com npm run build
+git add -A
+git commit -m "describe el cambio"
+git push
 ```
 
-Ese valor alimenta el `canonical`, el sitemap y la vista previa del enlace en WhatsApp.
+En GitHub, el repositorio debe tener **Settings → Pages → Source: GitHub Actions**. Si cambias
+de dominio, edita `SITE_URL` en `astro.config.mjs` y el `Sitemap` de `public/robots.txt`.
+
+Ese valor alimenta el `canonical`, el sitemap y la vista previa del enlace en WhatsApp. GitHub
+Pages sirve el HTML directo, sin el desafío JavaScript de InfinityFree, así que WhatsApp,
+Telegram y Facebook ya muestran `og.png`.
+
+### Documentos
+
+- `public/docs/carta-recomendacion.webp` — carta escaneada (versión completa).
+- `public/docs/carta-recomendacion-min.webp` — miniatura de la tarjeta.
+- `public/docs/certificado-contrataciones.pdf` — certificado de CEGICAP.
 
 ## 5. Formulario de contacto
 
@@ -89,13 +95,14 @@ npm run build
 npm run preview
 ```
 
-- [ ] El sitio abre en móvil y escritorio, en tema claro y oscuro.
+- [ ] El sitio abre en móvil y escritorio, en tema claro y oscuro (abre en claro por defecto).
 - [ ] Los cuatro botones "Ver demo" abren su proyecto.
 - [ ] El botón de WhatsApp abre un chat con el número correcto.
 - [ ] El CV descarga el PDF vigente.
+- [ ] La carta abre su vista ampliada y el certificado descarga el PDF.
 - [ ] `public/og.png` sigue representando el sitio (es la vista previa en WhatsApp).
 
-## 7. Seguridad del hosting
+## 7. Seguridad del hosting de las demos
 
 - Las credenciales de MySQL están en `conexion.php` de cada proyecto. **No uses la misma
   contraseña para la base de datos y para el FTP/panel.**
