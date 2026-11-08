@@ -7,7 +7,7 @@ export const credentials = [
     title: { es: 'Bachiller en Estadística e Informática', en: "Bachelor's in Statistics and Computer Science" } as L,
     issuer: 'UNJFSC · Facultad de Ciencias · 2019–2024',
     verified: false,
-    url: '',
+    url: '/docs/bachiller.pdf',
   },
   {
     badge: 'CEGI',
@@ -21,13 +21,13 @@ export const credentials = [
     title: { es: 'Gestión de Proyectos · Conoce a Junior', en: 'Project Management · Conoce a Junior' } as L,
     issuer: 'Junior Achievement Perú y PMI · 2025',
     verified: false,
-    url: '',
+    url: '/docs/conoce-a-junior.pdf',
   },
   {
     badge: 'BECA',
     title: { es: 'Beca de Permanencia de Estudios Nacional', en: 'National Study Continuity Scholarship' } as L,
     issuer: 'PRONABEC · Convocatoria 2021',
     verified: false,
-    url: '',
+    url: '/docs/constancia-pronabec.pdf',
   },
 ];

@@ -76,9 +76,15 @@ Telegram y Facebook ya muestran `og.png`.
 
 ### Documentos
 
+Los documentos personales se publican sin datos sensibles: del diploma solo va el anverso y
+la constancia de PRONABEC tiene el DNI tapado.
+
 - `public/docs/carta-recomendacion.webp` — carta escaneada (versión completa).
 - `public/docs/carta-recomendacion-min.webp` — miniatura de la tarjeta.
 - `public/docs/certificado-contrataciones.pdf` — certificado de CEGICAP.
+- `public/docs/bachiller.pdf` — diploma de bachiller (solo el anverso).
+- `public/docs/conoce-a-junior.pdf` — constancia de Junior Achievement / PMI.
+- `public/docs/constancia-pronabec.pdf` — constancia de beca, con el DNI tapado.
 
 ## 5. Formulario de contacto
 
