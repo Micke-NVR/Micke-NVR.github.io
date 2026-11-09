@@ -3,6 +3,13 @@ import type { L } from '../i18n/utils';
 /** ✏️ ACREDITACIONES. `url` = enlace de verificación (opcional). `verified: true` solo si puede comprobarse públicamente. */
 export const credentials = [
   {
+    badge: 'MDCC',
+    title: { es: 'Constancia de prestación de servicios · Sistemas prediales', en: 'Certificate of service · Property tax systems' } as L,
+    issuer: 'Municipalidad Distrital de Caleta de Carquín · 2024–2026',
+    verified: false,
+    url: '/docs/constancias-mdcc.pdf',
+  },
+  {
     badge: 'UNJFSC',
     title: { es: 'Bachiller en Estadística e Informática', en: "Bachelor's in Statistics and Computer Science" } as L,
     issuer: 'UNJFSC · Facultad de Ciencias · 2019–2024',
