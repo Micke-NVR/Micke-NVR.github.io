@@ -87,7 +87,7 @@ export const projects: Project[] = [
     },
     tags: ['React', 'Node.js', 'MySQL', 'Express'],
     demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
-    cover: '/images/projects/sistema-tributario-2026.webp',
+    cover: '/images/projects/sistema-tributario-2026.jpg',
     flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
   },
 ];
