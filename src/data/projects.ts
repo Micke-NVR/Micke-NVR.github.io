@@ -77,4 +77,17 @@ export const projects: Project[] = [
     cover: '/images/projects/vidamas.webp',
     flow: { label: 'vidamas.crm', badge: 'Demo', steps: ['Landing', 'Consulta', 'Lead', 'Panel'] },
   },
+  {
+    id: 'tributario-2026',
+    category: { es: 'Trabajo real · Sector público', en: 'Real work · Public sector' },
+    title: { es: 'Sistema Tributario 2026 · Carquín', en: 'Tax System 2026 · Carquín' },
+    description: {
+      es: 'Migración y modernización del sistema de gestión tributaria municipal para el ejercicio fiscal 2026: padrón de contribuyentes y predios (urbanos y rústicos), cálculo de autovalúo y predial por tramos, caja y recaudación con recibos anulables, dashboard de recaudación, auditoría de operaciones y emisión de hojas resumen (PU/PR/HR).',
+      en: 'Migration and modernization of the municipal tax management system for fiscal year 2026: taxpayer and property registry (urban and rural), assessed value and property tax calculation by brackets, cashier and collection with voidable receipts, collection dashboard, operation auditing and summary sheet printing (PU/PR/HR).',
+    },
+    tags: ['React', 'Node.js', 'MySQL', 'Express'],
+    demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
+    cover: '/images/projects/sistema-tributario-2026.webp',
+    flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
+  },
 ];
