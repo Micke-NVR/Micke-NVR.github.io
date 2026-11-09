@@ -44,7 +44,7 @@ Las cuatro tarjetas enlazan a demos funcionales alojadas en el mismo hosting:
 | Sistema Predial 2025 · Carquín | https://mickenvr.freedev.app/Sistema_Predial_2025/ |
 | Sistema Predial 2024 · Carquín | https://mickenvr.freedev.app/Sistema_Predial_2024/ |
 | Academia El Olympo | https://mickenvr.freedev.app/Academia/app/ |
-| Horizonte Inmobiliaria · CRM | https://mickenvr.freedev.app/Norte-Chico/app/ |
+| Vidamas Inmobiliaria · Web + CRM | https://mickenvr.freedev.app/crm/ |
 
 Todas usan datos ficticios. Las capturas de las tarjetas están en
 `public/images/projects/` (WebP, 1280×720).
@@ -54,7 +54,7 @@ Credenciales de demostración:
 - Predial 2025: `demo` / `Demo2025!`
 - Predial 2024: `JuanC` / `Demo2024*`
 - Academia: estudiante `alumno@elolympo.demo` / `Alumno2026!`, admin `admin` / `Admin2026!`
-- Inmobiliaria: `gerencia` / `demo1234`
+- Inmobiliaria (CRM Vidamas): asesor `70000001` / `demo1234`, gerencia `70000002` / `demo1234`, admin `admin` / `Admin2026!`
 
 ## 4. Publicar en GitHub Pages
 
