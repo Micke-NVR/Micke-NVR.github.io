@@ -26,6 +26,45 @@ export interface Project {
  */
 export const projects: Project[] = [
   {
+    id: 'tributario-2026',
+    category: { es: 'Trabajo real · Sector público', en: 'Real work · Public sector' },
+    title: { es: 'Sistema Tributario 2026 · Carquín', en: 'Tax System 2026 · Carquín' },
+    description: {
+      es: 'Migración y modernización del sistema de gestión tributaria municipal para el ejercicio fiscal 2026: padrón de contribuyentes y predios (urbanos y rústicos), cálculo de autovalúo y predial por tramos, caja y recaudación con recibos anulables, dashboard de recaudación, auditoría de operaciones y emisión de hojas resumen (PU/PR/HR).',
+      en: 'Migration and modernization of the municipal tax management system for fiscal year 2026: taxpayer and property registry (urban and rural), assessed value and property tax calculation by brackets, cashier and collection with voidable receipts, collection dashboard, operation auditing and summary sheet printing (PU/PR/HR).',
+    },
+    tags: ['React', 'PHP', 'MySQL'],
+    demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
+    cover: '/images/projects/sistema-tributario-2026.jpg',
+    flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
+  },
+  {
+    id: 'horizonte',
+    category: { es: 'Trabajo real · Sector inmobiliario', en: 'Real work · Real estate' },
+    title: { es: 'Horizonte Inmobiliaria · Web + CRM', en: 'Horizonte Real Estate · Website + CRM' },
+    description: {
+      es: 'Web pública para una inmobiliaria del Norte Chico (Huacho, Huaral, Barranca, Chancay y Lima) con inmuebles, filtros, favoritos, fichas de detalle y un asistente que convierte consultas en leads, más un CRM con panel, pipeline, propiedades, clientes, agenda y reportes. La demo funciona en el navegador; la versión PHP+MySQL está disponible en el mismo hosting.',
+      en: 'Public website for a real estate company in the Norte Chico area (Huacho, Huaral, Barranca, Chancay and Lima) with properties, filters, favorites, detail pages and an assistant that turns inquiries into leads, plus a CRM with panel, pipeline, properties, clients, agenda and reports. The demo runs in the browser; the PHP+MySQL version is available on the same hosting.',
+    },
+    tags: ['PHP', 'MySQL', 'JavaScript', 'GSAP'],
+    demo: 'https://mickenvr.freedev.app/Norte-Chico/app/',
+    cover: '/images/projects/inmobiliaria.webp',
+    flow: { label: 'horizonte.crm', badge: 'Demo', steps: ['Web pública', 'Filtros', 'Asistente', 'CRM'] },
+  },
+  {
+    id: 'vidamas',
+    category: { es: 'Trabajo real · Sector inmobiliario', en: 'Real work · Real estate' },
+    title: { es: 'Vidamas Inmobiliaria · Web + CRM', en: 'Vidamas Real Estate · Website + CRM' },
+    description: {
+      es: 'Landing pública y CRM para una inmobiliaria del Norte Chico: catálogo de proyectos, captación de consultas y un panel para asesores con seguimiento de leads por etapas, red de referidos, cotizaciones, comisiones, tickets de soporte y planos. La demo usa datos ficticios y conserva los flujos reales del sistema.',
+      en: 'Public landing page and CRM for a real estate company in the Norte Chico area: project catalog, lead capture and an advisor panel with stage-based lead tracking, referral network, quotes, commissions, support tickets and floor plans. The demo uses fictional data and keeps the real system flows.',
+    },
+    tags: ['Laravel', 'PHP', 'MySQL', 'Blade'],
+    demo: 'https://mickenvr.freedev.app/crm/',
+    cover: '/images/projects/vidamas.webp',
+    flow: { label: 'vidamas.crm', badge: 'Demo', steps: ['Landing', 'Consulta', 'Lead', 'Panel'] },
+  },
+  {
     id: 'predial-2025',
     category: { es: 'Trabajo real · Sector público', en: 'Real work · Public sector' },
     title: { es: 'Sistema Predial 2025 · Carquín', en: 'Property Tax System 2025 · Carquín' },
@@ -63,31 +102,5 @@ export const projects: Project[] = [
     demo: 'https://mickenvr.freedev.app/Academia/app/',
     cover: '/images/projects/academia.webp',
     flow: { label: 'academia.olympo', badge: 'Demo', steps: ['Portada', 'Matrícula', 'Aula', 'Administración'] },
-  },
-  {
-    id: 'vidamas',
-    category: { es: 'Trabajo real · Sector inmobiliario', en: 'Real work · Real estate' },
-    title: { es: 'Vidamas Inmobiliaria · Web + CRM', en: 'Vidamas Real Estate · Website + CRM' },
-    description: {
-      es: 'Landing pública y CRM para una inmobiliaria del Norte Chico: catálogo de proyectos, captación de consultas y un panel para asesores con seguimiento de leads por etapas, red de referidos, cotizaciones, comisiones, tickets de soporte y planos. La demo usa datos ficticios y conserva los flujos reales del sistema.',
-      en: 'Public landing page and CRM for a real estate company in the Norte Chico area: project catalog, lead capture and an advisor panel with stage-based lead tracking, referral network, quotes, commissions, support tickets and floor plans. The demo uses fictional data and keeps the real system flows.',
-    },
-    tags: ['Laravel', 'PHP', 'MySQL', 'Blade'],
-    demo: 'https://mickenvr.freedev.app/crm/',
-    cover: '/images/projects/vidamas.webp',
-    flow: { label: 'vidamas.crm', badge: 'Demo', steps: ['Landing', 'Consulta', 'Lead', 'Panel'] },
-  },
-  {
-    id: 'tributario-2026',
-    category: { es: 'Trabajo real · Sector público', en: 'Real work · Public sector' },
-    title: { es: 'Sistema Tributario 2026 · Carquín', en: 'Tax System 2026 · Carquín' },
-    description: {
-      es: 'Migración y modernización del sistema de gestión tributaria municipal para el ejercicio fiscal 2026: padrón de contribuyentes y predios (urbanos y rústicos), cálculo de autovalúo y predial por tramos, caja y recaudación con recibos anulables, dashboard de recaudación, auditoría de operaciones y emisión de hojas resumen (PU/PR/HR).',
-      en: 'Migration and modernization of the municipal tax management system for fiscal year 2026: taxpayer and property registry (urban and rural), assessed value and property tax calculation by brackets, cashier and collection with voidable receipts, collection dashboard, operation auditing and summary sheet printing (PU/PR/HR).',
-    },
-    tags: ['React', 'Node.js', 'MySQL', 'Express'],
-    demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
-    cover: '/images/projects/sistema-tributario-2026.jpg',
-    flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
   },
 ];
