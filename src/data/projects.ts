@@ -44,6 +44,24 @@ export const projects: Project[] = [
     demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
     cover: '/images/projects/sistema-tributario-2026.jpg',
     notaDemo: { es: 'Datos ficticios · acceso precargado', en: 'Fictional data · preloaded access' },
+    problema: {
+      es: 'Hasta 2023, el impuesto predial de unos 1900 predios se calculaba en hojas de Excel: los formatos de predio urbano, rústico y hoja de resumen se llenaban contribuyente por contribuyente y se rehacían cada año a mano. Un método lento y poco confiable.',
+      en: 'Until 2023, the property tax of about 1900 properties was calculated in Excel spreadsheets: urban property, rural property and summary sheet forms were filled out contributor by contributor and redone by hand every year. A slow and unreliable method.',
+    },
+    queHice: {
+      es: 'En 2023, como practicante de la subgerencia y con la asistencia técnica del especialista administrativo del área, desarrollé un sistema web que genera los formatos PU, PR y HR del impuesto predial, y migré los datos del Excel con Python. Lo reescribí en 2025 (PHP nativo con MVC ligera) y en 2026 (React + PHP), esta última con caja y recibos anulables, dashboard de recaudación, auditoría de operaciones y emisión de hojas resumen.',
+      en: 'In 2023, as an intern at the sub-management and with the technical assistance of the area\'s administrative specialist, I developed a web system that generates the PU, PR and HR property tax forms, and I migrated the Excel data with Python. I rewrote it in 2025 (native PHP with a lightweight MVC) and in 2026 (React + PHP), the latter with cashier and voidable receipts, collection dashboard, operation auditing and summary sheet printing.',
+    },
+    decisiones: [
+      'Migración con Python: primero limpieza de los datos del Excel y después scripts que sumaban totales para compararlos con el original. Fue un proceso lento, pero cada total se corroboraba.',
+      'El sistema parte de tres datos de entrada (valores unitarios de edificación, porcentaje de depreciación y aranceles) y a partir de ahí genera los formatos automáticamente.',
+      'Control de calidad contra el Excel anterior: se comparó la salida del sistema con el método viejo antes de usarlo.',
+      'PHP, MySQL y JavaScript, las tecnologías que dominaba por mi formación universitaria.',
+    ],
+    resultado: {
+      es: 'Según la carta de recomendación de la Subgerencia de Administración Tributaria (2025), el sistema permitió mejorar los ingresos por impuesto predial.',
+      en: 'According to the recommendation letter from the Tax Administration Sub-Management (2025), the system helped improve property tax revenue.',
+    },
     flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
   },
   {
