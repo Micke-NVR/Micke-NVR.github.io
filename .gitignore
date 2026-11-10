@@ -2,7 +2,10 @@ node_modules/
 dist/
 .astro/
 .env
+*.env
 .DS_Store
 *.zip
 _privado/
 md/
+CONTINUIDAD*.md
+PENDIENTES.md

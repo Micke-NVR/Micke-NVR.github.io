@@ -41,6 +41,11 @@ export const profile = {
     en: 'Reply within 24 business hours (GMT-5, Peru).',
   } as L,
 
+  availability: {
+    es: 'Abierto a empleo remoto y proyectos freelance.',
+    en: 'Open to remote employment and freelance projects.',
+  } as L,
+
   languages: [
     { name: { es: 'Español', en: 'Spanish' } as L, level: { es: 'Nativo', en: 'Native' } as L },
     { name: { es: 'Inglés', en: 'English' } as L, level: { es: 'Básico', en: 'Basic' } as L },

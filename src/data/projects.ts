@@ -12,11 +12,18 @@ export interface Project {
   status?: 'done' | 'wip';
   /** Enlaces. Si están vacíos, el botón no se muestra. */
   demo?: string;
+  demo2?: string;
   repo?: string;
   /** Imagen en public/images/projects/ (ej. '/images/projects/mi-app.png', 1200×675). */
   cover?: string;
   /** Si no hay `cover`, se dibuja este diagrama de flujo. */
   flow: { label: string; badge?: string; steps: string[] };
+  /** Campos opcionales para tarjetas enriquecidas */
+  problema?: L;
+  queHice?: L;
+  decisiones?: string[];
+  resultado?: L;
+  notaDemo?: L;
 }
 
 /**
@@ -36,7 +43,33 @@ export const projects: Project[] = [
     tags: ['React', 'PHP', 'MySQL'],
     demo: 'https://mickenvr.freedev.app/Sistema_Tributario_2026/',
     cover: '/images/projects/sistema-tributario-2026.jpg',
+    notaDemo: { es: 'Datos ficticios · acceso precargado', en: 'Fictional data · preloaded access' },
     flow: { label: 'tributario.v2026', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
+  },
+  {
+    id: 'listener',
+    category: { es: 'Prototipo · Automatización con IA', en: 'Prototype · AI automation' },
+    title: { es: 'Listener · Bot de WhatsApp con IA', en: 'Listener · WhatsApp bot with AI' },
+    description: {
+      es: 'App Android propia que lee las notificaciones de WhatsApp y WhatsApp Business y responde automáticamente consultando a un puente serverless en Google Apps Script, que arma el contexto y llama a un modelo en Groq.',
+      en: 'Own Android app that reads WhatsApp and WhatsApp Business notifications and replies automatically by querying a serverless bridge in Google Apps Script, which builds the context and calls a model on Groq.',
+    },
+    problema: {
+      es: 'Un negocio atendía consultas por WhatsApp a mano. Las apps de auto-respuesta existentes limitan funciones clave a planes de pago y no dan control sobre el contexto ni la memoria de la conversación.',
+      en: 'A business answered WhatsApp inquiries by hand. Existing auto-reply apps lock key features behind paid plans and give no control over context or conversation memory.',
+    },
+    queHice: {
+      es: 'App Android propia en Kotlin que lee las notificaciones de WhatsApp y WhatsApp Business, filtra grupos, duplicados y mensajes propios, y consulta a un puente serverless en Google Apps Script. El puente arma el contexto (prompt y memoria en Google Sheets), llama a un modelo en Groq y devuelve la respuesta, que la app envía con la acción Responder de la notificación.',
+      en: 'Own Android app in Kotlin that reads WhatsApp and WhatsApp Business notifications, filters groups, duplicates and own messages, and queries a serverless bridge in Google Apps Script. The bridge builds the context (prompt and memory in Google Sheets), calls a model on Groq and returns the reply, which the app sends using the notification Reply action.',
+    },
+    decisiones: [
+      'Prompt, modelo y memoria se editan desde una hoja de Google, sin recompilar la app.',
+      'El token vive en las propiedades del script, nunca en el código.',
+      'Si el servidor devuelve HTML o vacío, la app no envía nada al cliente.',
+      'Registro de eventos en pantalla para depurar cada mensaje recibido y enviado.',
+    ],
+    tags: ['Kotlin', 'Android', 'Apps Script', 'Groq'],
+    flow: { label: 'listener.bot', badge: 'Prototipo', steps: ['Notificación', 'Filtro', 'Puente', 'Respuesta'] },
   },
   {
     id: 'horizonte',
@@ -65,31 +98,20 @@ export const projects: Project[] = [
     flow: { label: 'vidamas.crm', badge: 'Demo', steps: ['Landing', 'Consulta', 'Lead', 'Panel'] },
   },
   {
-    id: 'predial-2025',
+    id: 'predial',
     category: { es: 'Trabajo real · Sector público', en: 'Real work · Public sector' },
-    title: { es: 'Sistema Predial 2025 · Carquín', en: 'Property Tax System 2025 · Carquín' },
+    title: { es: 'Sistema Predial · Carquín (2024 → 2025)', en: 'Property Tax System · Carquín (2024 → 2025)' },
     description: {
-      es: 'Reescritura del sistema de administración predial de la Municipalidad Distrital de Caleta de Carquín sobre PHP nativo con arquitectura MVC ligera: padrón urbano y rústico, autoavalúo, deudas, pagos, declaraciones imprimibles y auditoría de operaciones.',
-      en: 'Rewrite of the property tax system for the District Municipality of Caleta de Carquín on native PHP with a lightweight MVC architecture: urban and rural registry, assessed value, debts, payments, printable declarations and operation auditing.',
+      es: 'Sistema de administración predial de la Municipalidad Distrital de Caleta de Carquín. Primera versión (2024): registro de predios, cartillas de urbano y rústico, recaudación y reportes, reemplazando las hojas de cálculo. Reescritura (2025): PHP nativo con arquitectura MVC ligera, PDO, padrón urbano y rústico, autoavalúo, deudas, pagos, declaraciones imprimibles y auditoría de operaciones.',
+      en: 'Property tax system for the District Municipality of Caleta de Carquín. First version (2024): property registry, urban and rural tax notices, collection and reports, replacing spreadsheets. Rewrite (2025): native PHP with a lightweight MVC architecture, PDO, urban and rural registry, assessed value, debts, payments, printable declarations and operation auditing.',
     },
     tags: ['PHP', 'MySQL', 'PDO', 'MVC'],
     demo: 'https://mickenvr.freedev.app/Sistema_Predial_2025/',
+    demo2: 'https://mickenvr.freedev.app/Sistema_Predial_2024/',
     cover: '/images/projects/predial-2025.webp',
-    flow: { label: 'predial.v2025', badge: 'Demo', steps: ['Padrón', 'Autoavalúo', 'Deudas y pagos', 'Reportes'] },
+    flow: { label: 'predial.v2025', badge: 'Demo', steps: ['Padrón', 'Autovalúo', 'Deudas y pagos', 'Reportes'] },
   },
-  {
-    id: 'predial-2024',
-    category: { es: 'Trabajo real · Primera versión', en: 'Real work · First version' },
-    title: { es: 'Sistema Predial 2024 · Carquín', en: 'Property Tax System 2024 · Carquín' },
-    description: {
-      es: 'Versión inicial del sistema, con la que se dejó de trabajar en hojas de cálculo: registro de predios, cartillas de urbano y rústico, recaudación y reportes. Es la base que luego se reescribió en 2025.',
-      en: 'First version of the system, the point where spreadsheets were left behind: property registry, urban and rural tax notices, collection and reports. It became the base for the 2025 rewrite.',
-    },
-    tags: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
-    demo: 'https://mickenvr.freedev.app/Sistema_Predial_2024/',
-    cover: '/images/projects/predial-2024.webp',
-    flow: { label: 'predial.v2024', badge: 'Demo', steps: ['Registro', 'Cartillas PU / PR', 'Recaudación', 'Reportes'] },
-  },
+
   {
     id: 'academia',
     category: { es: 'Proyecto · Plataforma educativa', en: 'Project · Education platform' },
