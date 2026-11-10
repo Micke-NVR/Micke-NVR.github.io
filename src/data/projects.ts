@@ -69,6 +69,7 @@ export const projects: Project[] = [
       'Registro de eventos en pantalla para depurar cada mensaje recibido y enviado.',
     ],
     tags: ['Kotlin', 'Android', 'Apps Script', 'Groq'],
+    repo: 'https://github.com/Micke-NVR/Listener',
     flow: { label: 'listener.bot', badge: 'Prototipo', steps: ['Notificación', 'Filtro', 'Puente', 'Respuesta'] },
   },
   {
