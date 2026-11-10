@@ -67,9 +67,14 @@ export const projects: Project[] = [
       'Si el servidor falla, no se envía nada al cliente.',
       'Registro de eventos en pantalla para depurar.',
     ],
+    resultado: {
+      es: 'Probado con 10 mensajes de prueba, todos respondidos en 4 a 8 s (media de unos 6 s). Un fallo de idioma detectado en la prueba, corregido y verificado en una re-prueba.',
+      en: 'Tested with 10 test messages, all answered in 4 to 8 s (average of about 6 s). One language glitch found in testing, fixed and verified in a re-test.',
+    },
     tags: ['Kotlin', 'Android', 'Apps Script', 'Groq'],
     repo: 'https://github.com/Micke-NVR/Listener',
-    flow: { label: 'listener.bot', badge: 'Prototipo', steps: ['Notificación', 'Filtro', 'Puente', 'Respuesta'] },
+    cover: '/images/projects/listener.webp',
+    flow: { label: 'listener.bot', badge: 'Prototipo funcional', steps: ['Notificación', 'Filtro', 'Puente', 'Respuesta'] },
   },
   {
     id: 'horizonte',

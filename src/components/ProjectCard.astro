@@ -86,7 +86,7 @@ const wip = p.status === 'wip';
         )}
         {p.repo && (
           <a href={p.repo} target="_blank" rel="noopener noreferrer" class:list={['inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-semibold transition', (!p.demo && !p.demo2) ? 'bg-ink text-white hover:bg-ink/85' : 'border border-line bg-stone-100 hover:bg-stone-200']}>
-            <Icon name="simple-icons:github" class="size-3.5" /> {lang === 'es' ? 'Ver código' : 'View code'}
+            <Icon name="simple-icons:github" class="size-3.5" /> {lang === 'es' ? 'Ver documentación' : 'View documentation'}
           </a>
         )}
       </div>
